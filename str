@@ -4,7 +4,7 @@
   become: yes
   tasks:
 
-     - name: Update yum
+    - name: Update yum
       yum:
         name: '*'
         state: latest
@@ -15,9 +15,9 @@
         name: "{{ item }}"
         state: present
         update_cache: yes
-      loop:
-        - wget
-        - git
+        loop:
+          - wget
+          - git
         
     - name: install and run maven build
       shell: 
