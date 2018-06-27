@@ -1,0 +1,32 @@
+provider "aws" {
+ region     = "us-west-2"
+}
+
+resource "aws_instance" "example" {
+  ami           = "ami-db710fa3"
+  instance_type = "t2.micro"
+ tags {
+    Name = "HelloWorld"
+  }
+}
+}
+
+data "aws_vpc" "selected" {
+  id = "vpc-e9edd690"
+}
+
+resource "aws_subnet" "example" {
+  vpc_id            = "${data.aws_vpc.selected.id}"
+}
+}
+
+data "aws_vpc" "selected" {
+  id = "vpc-e9edd690"
+}
+
+resource "aws_subnet" "example" {
+  vpc_id            = "${data.aws_vpc.selected.id}"
+  cidr_block = "172.31.0.0/16"
+  availability_zone = "us-west-2b"
+}
+
