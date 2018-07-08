@@ -1,0 +1,5 @@
+  575  export NAME=orudenk.k8s.local && export KOPS_STATE_STORE=s3://orudenk && export EDITOR=nano && export AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id) && export AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key)
+  576  kops create cluster --zones us-west-2b --master-size=t2.micro --node-size=t2.micro --master-volume-size=10 --node-volume-size=10 ${NAME}
+  577  kops create secret --name orudenk.k8s.local sshpublickey admin -i  /root/.ssh/id_rsa.pub
+  578  kops create cluster --zones us-west-2b --master-size=t2.micro --node-size=t2.micro --master-volume-size=10 --node-volume-size=10 ${NAME}
+  579  kops edit cluster ${NAME}
