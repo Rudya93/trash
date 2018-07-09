@@ -3,3 +3,28 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/s
 
 
 kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}')
+
+
+
+
+
+1. https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/provider/cloud-generic.yaml (удалить строчку с неймспейсом или поменять на `namespace: default`)
+2. `kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/mandatory.yaml`
+только в этом файлкие надо все `namespace: ingress-nginx` поменять на `namespace: default`
+
+
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: app-ingress
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+    ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        backend:
+          serviceName: petclinic
+          servicePort: 8080
