@@ -3,3 +3,8 @@
   577  kops create secret --name orudenk.k8s.local sshpublickey admin -i  /root/.ssh/id_rsa.pub
   578  kops create cluster --zones us-west-2b --master-size=t2.micro --node-size=t2.micro --master-volume-size=10 --node-volume-size=10 ${NAME}
   579  kops edit cluster ${NAME}
+  
+aws s3api create-bucket --bucket orudenk --region us-west-2 --create-bucket-configuration LocationConstraint=us-west-2
+aws s3api put-bucket-versioning --bucket orudenk  --versioning-configuration Status=Enabled
+ssh-keygen -t rsa
+
