@@ -13,3 +13,7 @@ systemctl restart kube-controller-manager.service
 swapoff -a
 kubeadm reset
 kubeadm init
+
+
+https://github.com/coreos/flannel/blob/master/Documentation/k8s-manifests/kube-flannel-rbac.yml
+https://github.com/coreos/flannel/blob/master/Documentation/kube-flannel.yml
