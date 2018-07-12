@@ -1,0 +1,15 @@
+openssl genrsa -out /tmp/serviceaccount.key 2048
+ 
+
+vim /etc/kubernetes/apiserver:
+KUBE_API_ARGS="--service_account_key_file=/tmp/serviceaccount.key"
+ 
+
+vim /etc/kubernetes/controller-manager
+KUBE_CONTROLLER_MANAGER_ARGS="--service_account_private_key_file=/tmp/serviceaccount.key"
+systemctl restart kube-controller-manager.service
+
+
+swapoff -a
+kubeadm reset
+kubeadm init
