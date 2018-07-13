@@ -18,5 +18,11 @@ stable"
 apt update
 apt install docker-ce kubelet kubeadm kubectl kubernetes-cni -
 
+kubeadm reset
+kubeadm init
+
+sudo systemctl enable kubelet && systemctl start kubelet
+
+
 
 Join by token
