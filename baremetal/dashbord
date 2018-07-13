@@ -1,0 +1,7 @@
+Create the Dashboard Service:
+kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
+kubectl describe services kubernetes-dashboard --namespace=kube-system
+kubectl proxy --address 0.0.0.0 --port 8001 --accept-hosts='^*$'
+
+# or if using localhost:
+ssh -L 8001:127.0.0.1:8001 -N
