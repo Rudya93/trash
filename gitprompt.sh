@@ -3,7 +3,10 @@
 # indicate the status of working directory.
 #
 # To use: Copy into ~/.bashrc and tweak if desired.
-#
+#Use in bashrc!!!
+#if [ -f ~/gitprompt.sh ]; then
+#    . ~/gitprompt.sh
+#fi
 # Based upon the following gists:
 # <https://gist.github.com/henrik/31631>
 # <https://gist.github.com/srguiwiz/de87bf6355717f0eede5>
